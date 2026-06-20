@@ -1,42 +1,16 @@
 # Purchase Order Manager
 A lightweight Purchase Ordering module: manage suppliers, products, and POs through their
 lifecycle (draft → placed → received / cancelled), with automatic stock updates on receipt.
-**Stack used:** Django + Django REST Framework, React, PostgreSQL, Docker.
+**Stack used:** Django + Django REST Framework, React, PostgreSQL.
 > This was built with Django/React instead of the Next.js/Prisma/Redis stack requested in
 > the original brief. See the note at the top of `PLAN.md` for why, and what would differ
 > in a Redis-backed version.
-## Quick Start (Docker)
-```bash
-cp .env.example .env
-docker compose up --build
-```
-This brings up:
-- PostgreSQL on `:5432`
-- Redis on `:6379` (included per the original compose shape; not used by the Django backend)
-- Django backend on `:8000`
-- React frontend on `:3000`
-Then seed sample data:
-```bash
-docker compose exec backend python manage.py shell < seed.py
-```
-Open **http://localhost:3000**.
-## Manual Setup (without Docker)
-**Backend:**
-```bash
-cd backend
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-# Update DB_* values in .env to point at your local Postgres
-python manage.py migrate
-python manage.py shell < seed.py
-python manage.py runserver
-```
-**Frontend:**
-```bash
-cd frontend
-npm install
-npm start
-```
+>
+> ## Running locally
+Backend: cd backend → create venv → pip install -r requirements.txt → py manage.py migrate → py manage.py runserver
+Frontend: cd frontend → npm install → npm run dev
+
+
 ## API Overview
 | Endpoint | Method | Description |
 |---|---|---|
